@@ -121,7 +121,7 @@ export default function App() {
     return (
         <View style={styles.container}>
             <Pressable onPress={stopAddress}>
-                <Text >dừng cập nhật vị trí hiện tại</Text>
+                <Text >dừng cập nhật vị trí hiện tại </Text>
             </Pressable>
             <MapView
                 style={styles.map}

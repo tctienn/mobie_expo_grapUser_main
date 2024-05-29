@@ -3,6 +3,12 @@
     "name": "grapUser",
     "slug": "grapUser",
     "version": "1.0.0",
+    "android": {
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyCb-NJd_bZlrfIPmbFc2HQoveEkBIOJwy0"
+        }
+      }},
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",

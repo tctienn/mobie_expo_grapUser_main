@@ -80,7 +80,7 @@ export default function ay() {
                         }}
 
                     >
-                        View user
+                        View users
                     </Link>
                     <Link
                         href={{

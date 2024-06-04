@@ -97,7 +97,7 @@ export default function App() {
 
 
     useEffect(() => {
-
+        alert(" request chỉ đường ")
 
         const getRoute = async () => {
             try {

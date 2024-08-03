@@ -1,37 +1,68 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
+import Home from './tab/index'
+import Tab from './tab/tab'
+import TabDEMO from './(tabs)/_layout'
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
 
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
 
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
+const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
-  if (!loaded) {
-    return null;
-  }
-
+{/* /// cấu hình draw/// */ }
+function DrawerNavigator() {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-    </ThemeProvider>
+    <Drawer.Navigator>
+      <Drawer.Screen
+        name="home"
+        options={{
+          drawerLabel: 'Home',
+          title: '',
+        }}
+        component={Tab}
+      />
+
+
+
+
+
+      {/* <Drawer.Screen
+        name="homemain"
+        options={{
+          drawerLabel: 'Home demo',
+          title: 'Overview',
+        }}
+        component={Ay}
+      /> */}
+
+    </Drawer.Navigator>
+  );
+}
+{/* /// cấu hình router/// */ }
+function AppNavigator() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Drawer"
+        component={DrawerNavigator}
+        options={{ headerShown: false }}
+      />
+
+
+      {/* Thêm các màn hình khác vào đây nếu cần */}
+    </Stack.Navigator>
+  );
+}
+
+export default function Layout() {
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <NavigationContainer independent={true}>
+        <AppNavigator />
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 }

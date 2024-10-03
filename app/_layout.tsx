@@ -7,7 +7,8 @@ import Home from './tab/index'
 import Tab from './tab/tab'
 import TabDEMO from './(tabs)/_layout'
 
-
+import OrderList from '@/components/compone/OrderList'
+import DetailOrderList from '@/components/compone/DetailOrderList'
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -19,8 +20,12 @@ function DrawerNavigator() {
       <Drawer.Screen
         name="home"
         options={{
-          drawerLabel: 'Home',
-          title: '',
+          drawerLabel: 'Trang chủ',
+          // headerShown: false,
+          title: '    ',
+          headerStyle: {
+            backgroundColor: 'rgb(235, 203, 227)'
+          }
         }}
         component={Tab}
       />
@@ -29,14 +34,14 @@ function DrawerNavigator() {
 
 
 
-      {/* <Drawer.Screen
+      <Drawer.Screen
         name="homemain"
         options={{
           drawerLabel: 'Home demo',
           title: 'Overview',
         }}
-        component={Ay}
-      /> */}
+        component={TabDEMO}
+      />
 
     </Drawer.Navigator>
   );
@@ -46,11 +51,20 @@ function AppNavigator() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Drawer"
+        name="Home"
         component={DrawerNavigator}
-        options={{ headerShown: false }}
+        options={{ headerShown: false, title: 'Trang Chủ' }}
       />
-
+      <Stack.Screen
+        name="OrderList"
+        component={OrderList}
+        options={{ headerShown: true, title: 'Đơn đang chờ' }}
+      />
+      <Stack.Screen
+        name="DetailOrderList"
+        component={DetailOrderList}
+        options={{ headerShown: true, title: 'Chi chi tiết đơn chờ' }}
+      />
 
       {/* Thêm các màn hình khác vào đây nếu cần */}
     </Stack.Navigator>

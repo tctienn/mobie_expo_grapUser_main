@@ -4,7 +4,7 @@ import { FontAwesome } from '@expo/vector-icons';
 
 import Home from './index';
 import Camera from './camera';
-
+import User from './user'
 
 // import datcho from './datcho';
 const Tab = createBottomTabNavigator();
@@ -21,10 +21,11 @@ export default function TabLayout() {
                 name="Home"
                 component={Home}
                 options={{
-                    tabBarLabel: 'Home',
+                    tabBarLabel: 'Trang chủ',
                     tabBarIcon: ({ color, size }) => (
                         <FontAwesome name="home" size={size} color={color} />
                     ),
+                    headerShown: false,
                 }}
             />
             <Tab.Screen
@@ -37,7 +38,16 @@ export default function TabLayout() {
                     ),
                 }}
             />
-
+            <Tab.Screen
+                name="User"
+                component={User}
+                options={{
+                    tabBarLabel: 'Người dùng',
+                    tabBarIcon: ({ color, size }) => (
+                        <FontAwesome name="user" size={size} color={color} />
+                    ),
+                }}
+            />
 
 
         </Tab.Navigator>
